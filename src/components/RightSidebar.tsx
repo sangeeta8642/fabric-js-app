@@ -1,11 +1,10 @@
 import React, { useMemo, useRef } from "react";
 
 import { RightSidebarProps } from "../types/type";
-import { bringElement, modifyShape } from "../lib/shapes";
+import {  modifyShape } from "../lib/shapes";
 
 import Text from "./settings/Text";
 import Color from "./settings/Color";
-// import Export from "./settings/Export";
 import Dimensions from "./settings/Dimensions";
 
 const RightSidebar = ({
@@ -14,7 +13,6 @@ const RightSidebar = ({
   fabricRef,
   activeObjectRef,
   isEditingRef,
-  // syncShapeInStorage,
 }: RightSidebarProps) => {
   const colorInputRef = useRef(null);
   const strokeInputRef = useRef(null);
@@ -29,11 +27,9 @@ const RightSidebar = ({
       property,
       value,
       activeObjectRef,
-      // syncShapeInStorage,
     });
   };
   
-  // memoize the content of the right sidebar to avoid re-rendering on every mouse actions
   const memoizedContent = useMemo(
     () => (
       <section className="flex flex-col border-t border-primary-grey-200 bg-primary-black text-primary-grey-300 min-w-[227px] sticky right-0 h-full max-sm:hidden select-none">
@@ -73,12 +69,10 @@ const RightSidebar = ({
           handleInputChange={handleInputChange}
         />
 
-        {/* <Export /> */}
       </section>
     ),
     [elementAttributes]
-  ); // only re-render when elementAttributes changes
-
+  );
   return memoizedContent;
 };
 

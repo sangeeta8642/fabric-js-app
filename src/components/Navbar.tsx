@@ -8,8 +8,6 @@ import { ActiveElement, NavbarProps } from "../types/type";
 
 import { Button } from "./ui/button";
 import ShapesMenu from "./ShapesMenu";
-// import ActiveUsers from "./users/ActiveUsers";
-// import { NewThread } from "./comments/NewThread";
 
 const Navbar = ({ activeElement, imageInputRef, handleImageUpload, handleActiveElement }: NavbarProps) => {
   const isActive = (value: string | Array<ActiveElement>) =>
@@ -32,7 +30,6 @@ const Navbar = ({ activeElement, imageInputRef, handleImageUpload, handleActiveE
             ${isActive(item.value) ? "bg-primary-green" : "hover:bg-primary-grey-200"}
             `}
           >
-            {/* If value is an array means it's a nav element with sub options i.e., dropdown */}
             {Array.isArray(item.value)? (
               <ShapesMenu
                 item={item}
@@ -43,8 +40,7 @@ const Navbar = ({ activeElement, imageInputRef, handleImageUpload, handleActiveE
               />
             ) 
             : item?.value === "comments" ? (
-              // If value is comments, trigger the NewThread component
-              // <NewThread>
+              
                 <Button className="relative w-5 h-5 object-contain">
                   <Image
                     src={item.icon}
@@ -53,7 +49,6 @@ const Navbar = ({ activeElement, imageInputRef, handleImageUpload, handleActiveE
                     className={isActive(item.value) ? "invert" : ""}
                   />
                 </Button>
-              // </NewThread>
             ) : (
               <Button className="relative w-5 h-5 object-contain">
                 <Image
@@ -69,7 +64,6 @@ const Navbar = ({ activeElement, imageInputRef, handleImageUpload, handleActiveE
         ))}
       </ul>
 
-      {/* <ActiveUsers /> */}
     </nav>
   );
 };

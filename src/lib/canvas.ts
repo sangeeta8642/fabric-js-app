@@ -11,7 +11,6 @@ import {
   CanvasSelectionCreated,
   RenderCanvas,
 } from "../types/type";
-// import { defaultNavElement } from "@/constants";
 import { createSpecificShape } from "./shapes";
 import { defaultNavElement } from "../constants";
 
@@ -32,11 +31,7 @@ export const initializeFabric = ({
     height: canvasElement?.clientHeight,
   });
 
-  // return ()=>{
-  //   canvas.dispose()
-  // }
-  // set canvas reference to fabricRef so we can use it later anywhere outside canvas listener
-  fabricRef.current = canvas;
+ fabricRef.current = canvas;
 
   return canvas;
 };
@@ -52,12 +47,7 @@ export const handleCanvasMouseDown = ({
   // get pointer coordinates
   const pointer = canvas.getPointer(options.e);
 
-  /**
-   * get target object i.e., the object that is clicked
-   * findtarget() returns the object that is clicked
-   *
-   * findTarget: http://fabricjs.com/docs/fabric.Canvas.html#findTarget
-   */
+ 
   const target = canvas.findTarget(options.e, false);
 
   // set canvas drawing mode to false
@@ -167,10 +157,7 @@ export const handleCanvaseMouseMove = ({
   // renderAll: http://fabricjs.com/docs/fabric.Canvas.html#renderAll
   canvas.renderAll();
 
-  // sync shape in storage
-  // if (shapeRef.current?.objectId) {
-  //   syncShapeInStorage(shapeRef.current);
-  // }
+
 };
 
 // handle mouse up event on canvas to stop drawing shapes
@@ -184,9 +171,6 @@ export const handleCanvasMouseUp = ({
 }: CanvasMouseUp) => {
   isDrawing.current = false;
   if (selectedShapeRef.current === "freeform") return;
-
-  // sync shape in storage as drawing is stopped
-  // syncShapeInStorage(shapeRef.current);
 
   // set everything to null
   shapeRef.current = null;

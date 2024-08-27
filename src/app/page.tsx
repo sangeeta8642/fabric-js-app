@@ -1,7 +1,5 @@
 "use client";
 
-// import Canvas from "./components/Canvas";
-// import Canvas2 from './components/Canvas2'
 import { useEffect, useRef, useState } from "react";
 import { fabric } from "fabric";
 import {
@@ -19,7 +17,6 @@ import { ActiveElement, Attributes } from "../types/type";
 import { defaultNavElement } from "../constants";
 import { handleDelete } from "../lib/key-events";
 import { handleImageUpload } from "../lib/shapes";
-// import RightSidebar from '../components';
 
 export default function Home() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -153,9 +150,6 @@ export default function Home() {
 
   return (
     <main className="h-screen overflow-hidden">
-      {/* <h1 className="text-3xl">Fabric.js Shapes Drawing</h1> */}
-      {/* <Canvas /> */}
-      {/* <Canvas2 /> */}
       <Navbar
         activeElement={activeElement}
         handleActiveElement={handleActiveElement}
@@ -172,7 +166,6 @@ export default function Home() {
       />
       <div className="w-full h-full flex">
         <Live canvasRef={canvasRef} />
-        {/* <RightSidebar/> */}
         <RightSidebar
           elementAttributes={elementAttributes}
           setElementAttributes={setElementAttributes}

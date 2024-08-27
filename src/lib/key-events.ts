@@ -6,7 +6,6 @@ import { CustomFabricObject } from "../types/type";
 export const handleCopy = (canvas: fabric.Canvas) => {
   const activeObjects = canvas.getActiveObjects();
   if (activeObjects.length > 0) {
-    // Serialize the selected objects
     const serializedObjects = activeObjects.map((obj) => obj.toObject());
     // Store the serialized objects in the clipboard
     localStorage.setItem("clipboard", JSON.stringify(serializedObjects));
@@ -60,7 +59,6 @@ export const handlePaste = (
 
 export const handleDelete = (
   canvas: fabric.Canvas,
-  // deleteShapeFromStorage: (id: string) => void
 ) => {
   const activeObjects = canvas.getActiveObjects();
   console.log(activeObjects);
@@ -71,7 +69,6 @@ export const handleDelete = (
     activeObjects.forEach((obj: CustomFabricObject<any>) => {
       if (!obj.objectId) return;
       canvas.remove(obj);
-      // deleteShapeFromStorage(obj.objectId);
     });
   }
 
@@ -86,41 +83,17 @@ export const handleKeyDown = ({
 }: {
   e: KeyboardEvent;
   canvas: fabric.Canvas | any;
-  // undo: () => void;
-  // redo: () => void;
-  // syncShapeInStorage: (shape: fabric.Object) => void;
-  // deleteShapeFromStorage: (id: string) => void;
 }) => {
   // Check if the key pressed is ctrl/cmd + c (copy)
   if ((e?.ctrlKey || e?.metaKey) && e.keyCode === 67) {
     handleCopy(canvas);
   }
-
-  // Check if the key pressed is ctrl/cmd + v (paste)
-  if ((e?.ctrlKey || e?.metaKey) && e.keyCode === 86) {
-    // handlePaste(canvas);
-  }
-
-  // Check if the key pressed is delete/backspace (delete)
-  // if (e.keyCode === 8 || e.keyCode === 46) {
-  //   handleDelete(canvas, deleteShapeFromStorage);
-  // }
-
+  
   // check if the key pressed is ctrl/cmd + x (cut)
   if ((e?.ctrlKey || e?.metaKey) && e.keyCode === 88) {
     handleCopy(canvas);
-    // handleDelete(canvas, deleteShapeFromStorage);
   }
 
-  // check if the key pressed is ctrl/cmd + z (undo)
-  // if ((e?.ctrlKey || e?.metaKey) && e.keyCode === 90) {
-  //   undo();
-  // }
-
-  // check if the key pressed is ctrl/cmd + y (redo)
-  // if ((e?.ctrlKey || e?.metaKey) && e.keyCode === 89) {
-  //   redo();
-  // }
 
   if (e.keyCode === 191 && !e.shiftKey) {
     e.preventDefault();

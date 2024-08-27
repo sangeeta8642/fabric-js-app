@@ -110,7 +110,6 @@ export const handleImageUpload = ({
 
       shapeRef.current = img;
 
-      // syncShapeInStorage(img);
       canvas.current.requestRenderAll();
     });
   };
@@ -136,7 +135,6 @@ export const modifyShape = ({
   property,
   value,
   activeObjectRef,
-  // syncShapeInStorage,
 }: ModifyShape) => {
   const selectedElement = canvas.getActiveObject();
 
@@ -157,13 +155,11 @@ export const modifyShape = ({
   // set selectedElement to activeObjectRef
   activeObjectRef.current = selectedElement;
 
-  // syncShapeInStorage(selectedElement);
 };
 
 export const bringElement = ({
   canvas,
   direction,
-  // syncShapeInStorage,
 }: ElementDirection) => {
   if (!canvas) return;
 
@@ -179,8 +175,4 @@ export const bringElement = ({
     canvas.sendToBack(selectedElement);
   }
 
-  // canvas.renderAll();
-  // syncShapeInStorage(selectedElement);
-
-  // re-render all objects on the canvas
 };
